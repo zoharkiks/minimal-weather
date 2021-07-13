@@ -22,3 +22,19 @@ const location = (setLat,setLong) => {
         setData(result);
       });
   };
+
+  export const fetchCity = async (city,e,setData,setCity)=>{
+    e.preventDefault()
+
+    await fetch(
+      `${params.baseUrl}current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&aqi=no`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setData(result);
+      });
+      Array.from(document.querySelectorAll("input")).forEach(
+        (input) => (input.value = "")
+      );
+      setCity('')
+  }

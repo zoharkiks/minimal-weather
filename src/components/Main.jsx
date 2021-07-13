@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import chevronDoubleDown from "../../node_modules/@iconify-icons/mdi/chevron-double-down";
-import {fetchWeather} from '../utils/FetchWeather'
-
+import { fetchWeather,fetchCity } from "../utils/FetchWeather";
 
 const Main = () => {
-  
-
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [data, setData] = useState([]);
-
+  const [city, setCity] = useState("");
 
   useEffect(() => {
-    fetchWeather(setLat,setLong,setData,lat,long);
+    fetchWeather(setLat, setLong, setData, lat, long);
   }, [lat, long]);
-
 
   return (
     <main
@@ -28,6 +24,8 @@ const Main = () => {
       }}
     >
       <div className="relative flex flex-col ">
+        
+        <form action="" onSubmit={(e)=>fetchCity(city,e,setData,setCity)}>
         <label htmlFor="location" className="text-white text-lg font-poppins ">
           Another Location:
         </label>
@@ -35,7 +33,14 @@ const Main = () => {
           id="location"
           className="w-[75%] font-poppins mt-2 bg-transparent border-b-2 border-white outline-none text-white"
           type="text"
+          onChange={(e) => {
+            setCity(e.target.value);
+            
+          }}
+          
         />
+        </form>
+        
       </div>
 
       <div className=" relative flex flex-col  text-white font-poppins mb-20">
@@ -47,7 +52,11 @@ const Main = () => {
         </p>
         <span className="text-lg ">{data?.location?.localtime}</span>
         <span className="text-lg ">{data?.current?.condition?.text}</span>
-        <img src={`${data?.current?.condition?.icon}`} className='h-20 w-20' alt="" />
+        <img
+          src={`${data?.current?.condition?.icon}`}
+          className="h-20 w-20"
+          alt=""
+        />
       </div>
 
       <Icon
