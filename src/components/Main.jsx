@@ -1,45 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import chevronDoubleDown from "../../node_modules/@iconify-icons/mdi/chevron-double-down";
+import {fetchWeather} from '../utils/FetchWeather'
+
 
 const Main = () => {
-  const params = {
-    key: process.env.API_KEY,
-    baseUrl: "https://api.weatherapi.com/v1/",
-  };
+  
 
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [data, setData] = useState([]);
 
-  const location = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    });
-  };
-
-  const fetchWeather = async () => {
-    location();
-
-    await fetch(
-      `${params.baseUrl}current.json?key=5c8f0622e71644c5a54204404202807&q=${lat},${long}&aqi=no`
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result);
-      });
-  };
 
   useEffect(() => {
-    fetchWeather();
+    fetchWeather(setLat,setLong,setData,lat,long);
   }, [lat, long]);
 
   console.log(data);
 
   return (
     <main
-      className="main relative before:absolute before:inset-0 before:bg-black/50  h-screen flex flex-col justify-between bg-no-repeat bg-cover bg-center px-4 py-[2.5rem]"
+      className="main relative before:absolute before:inset-0 before:bg-black/50  h-screen flex flex-col justify-between bg-no-repeat bg-cover bg-center px-6 py-[2.5rem]"
       style={{
         backgroundImage:
           "url(" +
