@@ -16,7 +16,6 @@ const Main = () => {
     fetchWeather(setLat,setLong,setData,lat,long);
   }, [lat, long]);
 
-  console.log(data);
 
   return (
     <main
