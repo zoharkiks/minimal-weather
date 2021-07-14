@@ -1,3 +1,5 @@
+import fetchPhotos from "../utils/FetchPhoto";
+
 const params = {
     key: process.env.NEXT_PUBLIC_API_KEY,
     baseUrl: "https://api.weatherapi.com/v1/",
@@ -23,7 +25,7 @@ const location = (setLat,setLong) => {
       });
   };
 
-  export const fetchCity = async (city,e,setData,setCity)=>{
+  export const fetchCity = async (city,e,setData,setCity,setPhotos)=>{
     e.preventDefault()
 
     await fetch(
@@ -36,5 +38,6 @@ const location = (setLat,setLong) => {
       Array.from(document.querySelectorAll("input")).forEach(
         (input) => (input.value = "")
       );
+      fetchPhotos(`${city}`,setPhotos)
       setCity('')
   }
