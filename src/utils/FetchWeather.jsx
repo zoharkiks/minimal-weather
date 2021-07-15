@@ -17,7 +17,7 @@ const location = (setLat,setLong) => {
     location(setLat,setLong);
 
     await fetch(
-      `${params.baseUrl}current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${lat},${long}&aqi=no`
+      `${params.baseUrl}forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${lat},${long}&days=3&aqi=no&alerts=no`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -29,7 +29,7 @@ const location = (setLat,setLong) => {
     e.preventDefault()
 
     await fetch(
-      `${params.baseUrl}current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&aqi=no`
+      `${params.baseUrl}forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=3&aqi=no&alerts=no`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -41,3 +41,9 @@ const location = (setLat,setLong) => {
       fetchPhotos(`${city}`,setPhotos)
       setCity('')
   }
+
+
+
+ 
+
+
