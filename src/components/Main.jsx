@@ -7,6 +7,7 @@ import chevronDoubleDown from "../../node_modules/@iconify-icons/mdi/chevron-dou
 // Utils
 import { fetchWeather, fetchCity } from "../utils/FetchWeather";
 import fetchPhotos from "../utils/FetchPhoto";
+import fetchQuotes from "../utils/FetchQuotes";
 
 
 
@@ -20,15 +21,17 @@ const Main = () => {
   const [data, setData] = useState([]);
   const [city, setCity] = useState("");
   const [photos, setPhotos] = useState([]);
+  const [quote, setQuote] = useState()
 
 
 
   useEffect(() => {
     fetchWeather(setLat, setLong, setData, lat, long);
     fetchPhotos(`${data?.location?.name}`, setPhotos);
-    
+    fetchQuotes(setQuote)
   }, [lat, long]);
 
+  console.log(quote);
   return (
     <main
       className="main relative before:absolute before:inset-0 before:bg-black/50  bg-no-repeat bg-cover bg-center lg:grid lg:grid-cols-12 "
@@ -40,7 +43,7 @@ const Main = () => {
       }}
     
     >
-      <div className="   h-screen px-6 py-[2.5rem] flex flex-col justify-between  md:px-8 lg:col-span-6">
+      <div className="   h-screen px-6 py-[2.5rem] flex flex-col justify-evenly  md:px-8 lg:col-span-6">
         <div className="relative flex flex-col ">
           <form
             action=""
@@ -64,7 +67,9 @@ const Main = () => {
           </form>
         </div>
 
-        <div className=" relative flex flex-col  text-white font-poppins mb-20">
+<span className='text-white font-poppins relative text-lg my-2 lg:text-xl italic'>"{quote?.content}"-{quote?.author}</span>
+
+        <div className=" relative flex flex-col  text-white font-poppins mb-15">
           <p>
             <span className="text-[4rem]">{data?.current?.temp_c}°C </span>
             <span className="text-[3rem] font-medium">
@@ -82,7 +87,7 @@ const Main = () => {
 
         <Icon
           icon={chevronDoubleDown}
-          className="animate-bounce h-12 w-12 text-white mx-auto lg:hidden  "
+          className="animate-bounce h-12 w-12 text-white mx-auto lg:hidden relative  "
         />
       </div>
       <div className=" lg:col-span-6" >
