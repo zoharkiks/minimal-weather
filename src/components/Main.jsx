@@ -23,15 +23,14 @@ const Main = () => {
   const [photos, setPhotos] = useState([]);
   const [quote, setQuote] = useState()
 
-
+  fetchWeather(setLat, setLong, setData, lat, long);
 
   useEffect(() => {
-    fetchWeather(setLat, setLong, setData, lat, long);
+    
     fetchPhotos(`${data?.location?.name}`, setPhotos);
     fetchQuotes(setQuote)
   }, [lat, long]);
 
-  console.log(quote);
   return (
     <main
       className="main relative before:absolute before:inset-0 before:bg-black/50  bg-no-repeat bg-cover bg-center lg:grid lg:grid-cols-12 "
