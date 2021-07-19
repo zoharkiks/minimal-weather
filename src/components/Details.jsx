@@ -4,11 +4,10 @@ import dateToDay from '../utils/DateToDay'
 import DateToDay from '../utils/DateToDay'
 
 const Details = ({cloud,wind,humidity,feelsLike,forecast}) => {
-    // console.log(forecast[0]?.date.toLocaleString('en-us', {weekday: 'long'}));
    
 
     return (
-        <div className='px-4 py-16 font-poppins  bg-gray-500  bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30'>
+        <div className='px-4 py-16 font-poppins  bg-gray-500  bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30 md:px-8 lg:h-screen'>
             <h1 className='text-xl text-white mb-10'>Weather Details</h1>
             <div className="grid grid-cols-4 text-lg text-white ">
                 <div className="flex flex-col col-span-2 text-opacity-75 space-y-[1.5rem]">
