@@ -1,29 +1,21 @@
-# Next.js + Tailwind CSS Example
+<h1 align="center">Wigs</h3> 
+<p> <a href="https://minimal-weather-mu.vercel.app/"><h3 align="center" >Live Site</h3></a>
+</p>
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+<p align="center">
+<img src="https://i.ibb.co/RzCwT7K/minimal-weather.png" alt="minimal-weather" height="75%" width="75%" >
+</p>
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+## Introduction 🚀
+<p>A responsive minimalist weather app with glassmorphism. Users can either enter location manually or get their current location
+</p>
 
-## Preview
+<h3 align="left">Languages and Tools 💻 </h3>
+<p>
+<a href="https://reactjs.org/" target="_blank"> <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-256.png" alt="c" width="7%" height="7%"/></a>
+<a href="https://code.visualstudio.com/" target="_blank"> <img src="https://img.icons8.com/fluent/344/visual-studio-code-2019.png" alt="c" width="7%" height="7%"/></a>
+</p>
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+<h3 align="left">How to Install ❓ </h3>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+<img src="https://i.ibb.co/ySbxh1v/How-to-Install.png" alt="How-to-Install" height="60%" width="60%" >
