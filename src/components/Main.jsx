@@ -70,7 +70,7 @@ fetchWeather(setData,latitude,longitude)
                 setCity(e.target.value);
               }}
             />
-            <Icon onClick={getLatLong} icon={crosshairsGps} className='h-8 w-8 text-white ' />
+            <Icon onClick={getLatLong} icon={crosshairsGps} className='h-6 w-6 md:h-8 md:w-8  text-white ' />
             </div>
            
           </form>
