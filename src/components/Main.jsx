@@ -4,32 +4,38 @@ import Details from "./Details";
 // Icons
 import { Icon } from "@iconify/react";
 import chevronDoubleDown from "../../node_modules/@iconify-icons/mdi/chevron-double-down";
+import crosshairsGps from "../../node_modules/@iconify-icons/mdi/crosshairs-gps";
 // Utils
 import { fetchWeather, fetchCity } from "../utils/FetchWeather";
 import fetchPhotos from "../utils/FetchPhoto";
 import fetchQuotes from "../utils/FetchQuotes";
-
-
-
-const Main = () => {
+import { geolocated } from "react-geolocated";
 
 
 
 
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
+const Main = ({coords}) => {
+
+
+
+
+  
   const [data, setData] = useState([]);
   const [city, setCity] = useState("");
   const [photos, setPhotos] = useState([]);
   const [quote, setQuote] = useState()
 
-  fetchWeather(setLat, setLong, setData, lat, long);
-
+  const getLatLong=()=>{
+    const { latitude, longitude } = coords;
+fetchWeather(setData,latitude,longitude)
+  }
+ 
   useEffect(() => {
-    
+  
     fetchPhotos(`${data?.location?.name}`, setPhotos);
     fetchQuotes(setQuote)
-  }, [lat, long]);
+    
+  }, [data]);
 
   return (
     <main
@@ -55,21 +61,25 @@ const Main = () => {
             >
               Another Location:
             </label>
+            <div className="flex">
             <input
               id="location"
-              className="w-[50%] font-poppins mt-2 bg-transparent border-b-2 border-white outline-none text-white"
+              className="w-[50%] font-poppins mt-2 bg-transparent border-b-2  border-white outline-none text-white"
               type="text"
               onChange={(e) => {
                 setCity(e.target.value);
               }}
             />
+            <Icon onClick={getLatLong} icon={crosshairsGps} className='h-8 w-8 text-white ' />
+            </div>
+           
           </form>
         </div>
 
-<span className='text-white font-poppins relative text-lg my-2 lg:text-xl italic'>"{quote?.content}"-{quote?.author}</span>
+<span  className='text-white font-poppins relative text-lg my-2 lg:text-xl italic'>"{quote?.content}"-{quote?.author}</span>
 
         <div className=" relative flex flex-col  text-white font-poppins mb-15">
-          <p>
+          {data.length===0?<><span className='text-[3rem]'>Please enter a location</span></>:<><p>
             <span className="text-[4rem]">{data?.current?.temp_c}°C </span>
             <span className="text-[3rem] font-medium">
               {data?.location?.name}
@@ -81,7 +91,8 @@ const Main = () => {
             src={`${data?.current?.condition?.icon}`}
             className="h-20 w-20"
             alt=""
-          />
+          /></>}
+          
         </div>
 
         <Icon
@@ -96,10 +107,16 @@ const Main = () => {
           wind={data?.current?.wind_kph}
           feelsLike={data?.current?.feelslike_c}
           forecast={data?.forecast?.forecastday}
+          data={data}
         />
       </div>
     </main>
   );
 };
 
-export default Main;
+export default geolocated({
+  positionOptions: {
+      enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,
+})(Main);
