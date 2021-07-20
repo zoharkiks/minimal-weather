@@ -1,4 +1,4 @@
-<h1 align="center">Wigs</h3> 
+<h1 align="center">Minimal Weather</h3> 
 <p> <a href="https://minimal-weather-mu.vercel.app/"><h3 align="center" >Live Site</h3></a>
 </p>
 
